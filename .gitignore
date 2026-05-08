@@ -52,3 +52,20 @@ android/.gradle/
 # Generated binaries
 *.lock
 *.bin
+
+# Generated plugin registrants
+.flutter-plugins
+.flutter-plugins-dependencies
+
+linux/flutter/generated_plugin_registrant.*
+linux/flutter/generated_plugins.cmake
+
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Flutter/Flutter-Generated.xcconfig
+macos/Flutter/flutter_export_environment.sh
+
+windows/flutter/generated_plugin_registrant.*
+windows/flutter/generated_plugins.cmake
+
+ios/Runner/GeneratedPluginRegistrant.*
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
