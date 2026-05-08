@@ -20,7 +20,7 @@ class ProPulseApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (_, child) {
         return GetMaterialApp(
-          title: 'Flutter Demo',
+          title: 'Pro Pulse',
           translations: AppTranslations(),
           locale: const Locale('en', 'US'),
           fallbackLocale: const Locale('en', 'US'),
