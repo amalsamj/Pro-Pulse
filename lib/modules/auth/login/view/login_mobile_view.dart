@@ -133,7 +133,12 @@ class MobileLoginView extends GetView<LoginController> {
                                           controller:
                                               controller.mobileController,
                                           keyboardType: TextInputType.phone,
-                                          onChanged: controller.validateMobile,
+                                          onChanged:
+                                              (value) =>
+                                                  controller.validateMobile(
+                                                    value,
+                                                    context,
+                                                  ),
                                           maxLength: 10,
                                           style: AppTextStyles.authInput(
                                             size: 17,
@@ -142,6 +147,9 @@ class MobileLoginView extends GetView<LoginController> {
                                           inputFormatters: [
                                             FilteringTextInputFormatter
                                                 .digitsOnly,
+                                            LengthLimitingTextInputFormatter(
+                                              10,
+                                            ),
                                           ],
 
                                           decoration: InputDecoration(

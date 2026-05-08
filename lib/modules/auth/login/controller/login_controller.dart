@@ -27,10 +27,15 @@ class LoginController extends GetxController {
     debugPrint("Arguments received: ${Get.arguments}");
   }
 
-  void validateMobile(String value) {
+  void validateMobile(String value, BuildContext context) {
     final mobile = value.trim();
+
     isMobileValid.value =
         mobile.length == 10 && RegExp(r'^[0-9]+$').hasMatch(mobile);
+
+    if (isMobileValid.value) {
+      FocusScope.of(context).unfocus();
+    }
   }
 
   RxBool isOtpValid = false.obs;

@@ -9,6 +9,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:pro_pulse_medical_app/core/constants/app_colors.dart';
 import 'package:pro_pulse_medical_app/core/constants/app_spacing.dart';
 import 'package:pro_pulse_medical_app/core/constants/app_text_styles.dart';
+import 'package:pro_pulse_medical_app/core/widgets/app_button.dart';
 import 'package:pro_pulse_medical_app/core/widgets/keyboard_dismiss.dart';
 import 'package:pro_pulse_medical_app/modules/auth/signup/controller/signup_controller.dart';
 import '../../widgets/glass_input_field.dart';
@@ -36,14 +37,14 @@ class SignupView extends GetView<SignupController> {
                     "Create Account",
                     textAlign: TextAlign.center,
                     style: AppTextStyles.authHeader().copyWith(
-                      color: Colors.black,
+                      color: AppColors.primary,
                       fontSize: 25.sp,
                     ),
                   ),
                 ),
               ),
 
-              AppSpacing.h15,
+              AppSpacing.h18,
 
               Expanded(
                 child: SingleChildScrollView(
@@ -249,34 +250,10 @@ class SignupView extends GetView<SignupController> {
                             AppSpacing.h10,
 
                             Obx(
-                              () => SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: controller.submitForm,
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    backgroundColor:
-                                        controller.isFormValid.value
-                                            ? AppColors.primary
-                                            : Colors.grey.shade200,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(18.r),
-                                    ),
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 14.h,
-                                    ),
-                                    shadowColor: Colors.transparent,
-                                  ),
-                                  child: Text(
-                                    "REGISTER",
-                                    style: AppTextStyles.authButton().copyWith(
-                                      color:
-                                          controller.isFormValid.value
-                                              ? Colors.white
-                                              : Colors.black54,
-                                    ),
-                                  ),
-                                ),
+                              () => AppButton(
+                                label: "REGISTER",
+                                isEnabled: controller.isFormValid.value,
+                                onPressed: controller.submitForm,
                               ),
                             ),
                           ],

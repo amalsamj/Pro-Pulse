@@ -18,7 +18,7 @@ Widget dummyRedirectPage = Scaffold(
     fit: StackFit.expand,
     children: [
       // Background Image
-      Image.asset('assets/images/welcome1.jpg', fit: BoxFit.cover),
+      Image.asset('assets/images/w5.png', fit: BoxFit.cover),
 
       // Light Blur Layer
       BackdropFilter(

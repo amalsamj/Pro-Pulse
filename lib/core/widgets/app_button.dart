@@ -26,7 +26,7 @@ class AppButton extends StatelessWidget {
     final bgColor =
         isEnabled
             ? (isOutlined ? Colors.white : AppColors.primary)
-            : Colors.grey.shade200;
+            : AppColors.disableButton;
 
     final textColor =
         isEnabled
@@ -35,18 +35,18 @@ class AppButton extends StatelessWidget {
 
     final borderColor =
         isOutlined
-            ? (isEnabled ? AppColors.primary : Colors.grey.shade300)
+            ? (isEnabled ? AppColors.primary : AppColors.disableButton)
             : Colors.transparent;
 
     return SizedBox(
       width: width ?? double.infinity,
       height: height.h,
       child: ElevatedButton(
-        onPressed: isEnabled ? onPressed : null,
+        onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           elevation: 0,
           backgroundColor: bgColor,
-          disabledBackgroundColor: Colors.grey.shade200,
+          disabledBackgroundColor: AppColors.disableButton,
           shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(28.r),
@@ -61,6 +61,48 @@ class AppButton extends StatelessWidget {
             color: textColor,
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PrimaryButton extends StatelessWidget {
+  final String text;
+  final VoidCallback onPressed;
+  final bool isEnabled;
+  final Widget? child;
+
+  const PrimaryButton({
+    super.key,
+    required this.text,
+    required this.onPressed,
+    this.isEnabled = true,
+    this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          elevation: 0,
+          backgroundColor: isEnabled ? AppColors.primary : Colors.grey.shade200,
+          shadowColor: Colors.transparent,
+          padding: EdgeInsets.symmetric(vertical: 14.h),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(18.r),
+          ),
+        ),
+        child:
+            child ??
+            Text(
+              text,
+              style: AppTextStyles.authButton().copyWith(
+                color: isEnabled ? Colors.white : Colors.black54,
+              ),
+            ),
       ),
     );
   }
